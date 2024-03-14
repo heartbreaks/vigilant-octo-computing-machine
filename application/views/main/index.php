@@ -9,7 +9,7 @@
     <div class="row">
 
         <?php if (empty($list)): ?>
-            <p>Список постов пуст</p>
+            <p>Список пользователей пуст</p>
         <?php else: ?>
             <div class="row col-md-12 mx-auto">
                 <?php foreach ($list as $val): ?>

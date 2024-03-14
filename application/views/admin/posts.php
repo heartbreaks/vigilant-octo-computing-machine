@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <?php if (empty($list)): ?>
-                        <p>Список постов пуст</p>
+                        <p>Список пользователей пуст</p>
                     <?php else: ?>
                         <table class="table">
                             <tr>

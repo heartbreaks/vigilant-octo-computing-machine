@@ -38,7 +38,7 @@ class AdminController extends Controller {
 			}
 			
 			$this->model->postUploadImage($_FILES['img']['tmp_name'], $id);
-			$this->view->message('success', 'Пост добавлен');
+			$this->view->message('success', 'Пользователь добавлен');
 		}
 		$this->view->render('Добавить пользователя');
 	}
