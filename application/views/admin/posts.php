@@ -1,29 +1,33 @@
-<h1>Список</h1>
-<div class="card-body">
-    <div class="mb-3 text-left">
-        <a class="p-2 text-dark" href="/admin/add">+ Добавить пользователя</a>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
+<div class="md:px-32 py-8 w-full">
+    <a href="/admin/add">+ Добавить пользователя</a>
+    <div class="shadow mt-5 overflow-hidden rounded border-b border-gray-200">
+        <table class="min-w-full bg-white">
+            <thead class="bg-gray-800 text-white">
+                <tr>
+                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Имя</th>
+                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Описание</th>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Управление</td>
+                </tr>
+            </thead>
+            <tbody class="text-gray-700">
             <?php if (empty($list)): ?>
-                <p>Список пользователей пуст</p>
+                <tr><td><h5>Список пользователей пуст</h5></td></tr>
             <?php else: ?>
-                <table>
+                <?php foreach ($list as $val): ?>
                     <tr>
-                        <th>Название</th>
-                        <th>Управление</th>
+                        <td class="w-1/3 text-left py-3 px-4"><?php echo htmlspecialchars($val['name'], ENT_QUOTES); ?></td>
+                        <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:<?php echo htmlspecialchars($val['email'], ENT_QUOTES);?>"><?php echo htmlspecialchars($val['email'], ENT_QUOTES); ?></a></td>
+                        <td class="text-left py-3 px-4"><a class="hover:text-blue-500"><?php echo htmlspecialchars($val['description'], ENT_QUOTES); ?></a></td>
+                        <td class="p-3">
+                            <a href="/admin/edit/<?php echo $val['id']; ?>">Редактировать</a>
+                            <a href="/admin/delete/<?php echo $val['id']; ?>">Удалить</a>
+                        </td>
                     </tr>
-                    <?php foreach ($list as $val): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($val['name'], ENT_QUOTES); ?></td>
-                            <td class="p-3">
-                                <a href="/admin/edit/<?php echo $val['id']; ?>">Редактировать</a>
-                                <a href="/admin/delete/<?php echo $val['id']; ?>">Удалить</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </table>
+                <?php endforeach; ?>
             <?php endif; ?>
-        </div>
+
+            </tbody>
+        </table>
     </div>
 </div>
