@@ -40,7 +40,7 @@ class AdminController extends Controller {
 			$this->model->postUploadImage($_FILES['img']['tmp_name'], $id);
 			$this->view->message('success', 'Пост добавлен');
 		}
-		$this->view->render('Добавить пост');
+		$this->view->render('Добавить пользователя');
 	}
 
 	public function editAction() {
@@ -60,7 +60,7 @@ class AdminController extends Controller {
 		$vars = [
 			'data' => $this->model->postData($this->route['id'])[0],
 		];
-		$this->view->render('Редактировать пост', $vars);
+		$this->view->render('Редактировать пользователя', $vars);
 	}
 
 	public function deleteAction() {
@@ -83,6 +83,6 @@ class AdminController extends Controller {
 			'pagination' => $pagination->get(),
 			'list' => $mainModel->postsList($this->route),
 		];
-		$this->view->render('Посты', $vars);
+		$this->view->render('Пользователи', $vars);
 	}
 }

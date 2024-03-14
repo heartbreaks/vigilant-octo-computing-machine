@@ -11,12 +11,12 @@
                                 <input class="form-control" type="text" value="<?php echo htmlspecialchars($data['name'], ENT_QUOTES); ?>" name="name">
                             </div>
                             <div class="form-group">
-                                <label>Описание</label>
-                                <input class="form-control" type="text" value="<?php echo htmlspecialchars($data['description'], ENT_QUOTES); ?>" name="description">
+                                <label>email</label>
+                                <input class="form-control" type="email" value="<?php echo htmlspecialchars($data['email'], ENT_QUOTES); ?>" name="email">
                             </div>
                             <div class="form-group">
                                 <label>Текст</label>
-                                <textarea class="form-control" rows="3" name="text"><?php echo htmlspecialchars($data['text'], ENT_QUOTES); ?></textarea>
+                                <textarea class="form-control" rows="3" name="description"><?php echo htmlspecialchars($data['description'], ENT_QUOTES); ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Изображение</label>

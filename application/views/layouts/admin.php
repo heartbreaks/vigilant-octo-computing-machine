@@ -25,7 +25,7 @@
                 <nav class="my-2 my-md-0 mr-md-3">
                     <a class="p-2 text-dark" href="/admin/posts">
                         <i class="fa fa-fw fa-list"></i>
-                        <span class="nav-link-text">Посты</span>
+                        <span class="nav-link-text">Пользователи</span>
                     </a>
                 </nav>
                 <a href="/admin/logout" class="btn btn-outline-primary">Выход</a>

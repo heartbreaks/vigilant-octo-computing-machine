@@ -25,7 +25,7 @@ class Main extends Model {
 	}
 
 	public function postsCount() {
-		return $this->db->column('SELECT COUNT(id) FROM posts');
+		return $this->db->column('SELECT COUNT(id) FROM users');
 	}
 
 	public function postsList($route) {
@@ -34,7 +34,7 @@ class Main extends Model {
 			'max' => $max,
 			'start' => ((($route['page'] ?? 1) - 1) * $max),
 		];
-		return $this->db->row('SELECT * FROM posts ORDER BY id DESC LIMIT :start, :max', $params);
+		return $this->db->row('SELECT * FROM users ORDER BY id DESC LIMIT :start, :max', $params);
 	}
 
 }

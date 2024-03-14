@@ -16,11 +16,10 @@
                     <div class="col-md-6">
                         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                             <div class="col p-4 d-flex flex-column position-static">
-                                <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                <strong class="d-inline-block mb-2 text-primary"><?php echo htmlspecialchars($val['email'], ENT_QUOTES); ?></strong>
                                 <h3 class="mb-0"><?php echo htmlspecialchars($val['name'], ENT_QUOTES); ?></h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
-                                <p class="card-text mb-auto"><?php echo htmlspecialchars($val['description'], ENT_QUOTES); ?></p>
-                                <a href="/post/<?php echo $val['id']; ?>" class="stretched-link">Continue reading</a>
+                                <div class="mb-1 text-muted"><?php echo htmlspecialchars($val['created_at'], ENT_QUOTES); ?></div>
+                                <a href="/post/<?php echo $val['id']; ?>" class="stretched-link">View</a>
                             </div>
                             <div class="col-auto d-none d-lg-block">
                                 <img style="background-size: cover" width="200" height="250" class="image-fluid" src='/public/materials/<?php echo $val['id']; ?>.jpg' alt="">

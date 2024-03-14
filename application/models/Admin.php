@@ -21,15 +21,11 @@ class Admin extends Model {
 	public function postValidate($post, $type) {
 		$nameLen = iconv_strlen($post['name']);
 		$descriptionLen = iconv_strlen($post['description']);
-		$textLen = iconv_strlen($post['text']);
 		if ($nameLen < 3 or $nameLen > 100) {
 			$this->error = 'Название должно содержать от 3 до 100 символов';
 			return false;
-		} elseif ($descriptionLen < 3 or $descriptionLen > 100) {
-			$this->error = 'Описание должно содержать от 3 до 100 символов';
-			return false;
-		} elseif ($textLen < 10 or $textLen > 5000) {
-			$this->error = 'Текст должнен содержать от 10 до 5000 символов';
+		} elseif ($descriptionLen < 3 or $descriptionLen > 300) {
+			$this->error = 'Описание должно содержать от 3 до 300 символов';
 			return false;
 		}
 		
@@ -45,9 +41,10 @@ class Admin extends Model {
 			'id' => '',
 			'name' => $post['name'],
 			'description' => $post['description'],
-			'text' => $post['text'],
+            'created_at' =>  date('Y/m/d'),
+			'email' => $post['email'],
 		];
-		$this->db->query('INSERT INTO posts VALUES (:id, :name, :description, :text)', $params);
+		$this->db->query('INSERT INTO users VALUES (:id, :name, :description, :created_at,  :email)', $params);
 		return $this->db->lastInsertId();
 	}
 
@@ -56,9 +53,9 @@ class Admin extends Model {
 			'id' => $id,
 			'name' => $post['name'],
 			'description' => $post['description'],
-			'text' => $post['text'],
+			'email' => $post['email'],
 		];
-		$this->db->query('UPDATE posts SET name = :name, description = :description, text = :text WHERE id = :id', $params);
+		$this->db->query('UPDATE users SET name = :name, description = :description, email = :email WHERE id = :id', $params);
 	}
 
 	public function postUploadImage($path, $id) {
@@ -72,14 +69,14 @@ class Admin extends Model {
 		$params = [
 			'id' => $id,
 		];
-		return $this->db->column('SELECT id FROM posts WHERE id = :id', $params);
+		return $this->db->column('SELECT id FROM users WHERE id = :id', $params);
 	}
 
 	public function postDelete($id) {
 		$params = [
 			'id' => $id,
 		];
-		$this->db->query('DELETE FROM posts WHERE id = :id', $params);
+		$this->db->query('DELETE FROM users WHERE id = :id', $params);
 		unlink('C:\OSPanel\domains\php-blog-master\public\materials\\'.$id.'.jpg');
 	}
 
@@ -87,7 +84,7 @@ class Admin extends Model {
 		$params = [
 			'id' => $id,
 		];
-		return $this->db->row('SELECT * FROM posts WHERE id = :id', $params);
+		return $this->db->row('SELECT * FROM users WHERE id = :id', $params);
 	}
 
 }
