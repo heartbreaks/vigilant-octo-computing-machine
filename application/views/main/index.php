@@ -1,4 +1,3 @@
-
 <div class="container">
     <div class="text-white font-italic p-4 p-md-5 mb-4 rounded text-body-emphasis bg-dark">
         <div class="col-lg-6 px-0">
@@ -22,7 +21,11 @@
                                 <a href="/post/<?php echo $val['id']; ?>" class="stretched-link">View</a>
                             </div>
                             <div class="col-auto d-none d-lg-block">
-                                <img style="background-size: cover" width="200" height="250" class="image-fluid" src='/public/materials/<?php echo $val['id']; ?>.jpg' alt="">
+                                <?php if (file_exists('C:\OSPanel\domains\php-blog-master\public\materials\\' . $val['id'] . '.jpg')): ?>
+                                    <img style="background-size: cover" width="200" height="250" class="image-fluid" src='/public/materials/<?php echo $val['id']; ?>.jpg' alt="">
+                                <?php else: ?>
+                                    <img style="background-size: cover" width="200" height="250" class="image-fluid" src='/public/images/no_image.jpg' alt="">
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
